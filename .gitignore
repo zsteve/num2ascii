@@ -1,0 +1,12 @@
+*.bak
+*.exe
+*.ilk
+*.pdb
+*.obj
+*.tlog
+*.lastbuildstate
+*.log
+*.sdf
+*.suo
+*.stackdump
+*.idb
