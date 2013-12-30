@@ -59,7 +59,13 @@ int DecASCIIToInteger(CSTRING s)
 {
 	int out_int=0;
 	int i=0;
+	int neg=0;
 	if(!s) return RET_FAILURE;
+	if(s[0]=='-'){
+		// is negative
+		neg=1;
+		i=1;
+	}
 	do{
 		int char_int=GetCharIndex(s[i], DecASCIINums);
 		if(char_int==RET_FAILURE)
@@ -71,7 +77,7 @@ int DecASCIIToInteger(CSTRING s)
 		i++;
 	}while(s[i]!=(char)NULL);
 	out_int/=10;
-	return out_int;
+	return neg ? -(out_int) : out_int;
 }
 
 /**
@@ -167,6 +173,13 @@ CSTRING IntegerToDecASCII(int n)
 {
 	int i=0;
 	int x=n;
+	int neg=0;
+	if(n<0){
+		neg=1;
+		out_str[0]='-';
+		x=abs(n);
+		i=1;
+	}
 	do{
 		int m=(x%10);
 		out_str[i]=GetCharAt(DecASCIINums, m);
